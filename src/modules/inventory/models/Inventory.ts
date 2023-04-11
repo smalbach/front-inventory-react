@@ -9,9 +9,16 @@ export interface InventoryModel {
 }
 
 
+export interface InventoryModelForm {
+  id: string
+  company?: string;
+  name?: string
+  quantity?: number
+  value?: number
+}
 
 
-export const initialInventory: InventoryModel = {
+export const initialInventory: InventoryModelForm = {
   id: '',
   name: '',
   quantity: 0,

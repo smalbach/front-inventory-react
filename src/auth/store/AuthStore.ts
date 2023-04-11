@@ -101,7 +101,6 @@ export default class AuthStore {
 
     await login(user, password)
       .then((response) => {
-        console.log("🚀 ~ file: AuthStore.ts:105 ~ AuthStore ~ .then ~ response:", response)
         this.accessToken = response.data.token
         setupAxios(axios, response.data.token)
         this.setUser(response.data.user)

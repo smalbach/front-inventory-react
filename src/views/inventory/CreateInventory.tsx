@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
 
 import { Alert, Button, H3, Input } from 'components'
-import {InventoryModel, initialInventory} from  'modules/inventory/models/Inventory'
+import {InventoryModel, InventoryModelForm, initialInventory} from  'modules/inventory/models/Inventory'
 import React, {useEffect, useState} from 'react'
 
 import Card from 'components/card'
@@ -26,11 +26,11 @@ const CreateInventory= () => {
   const [loading, setLoading] = useState(false)
   const [companies, setCompanies] = useState<Array<CompanyModel>>([]);
 
-  const formik = useFormik<InventoryModel>({
+  const formik = useFormik<InventoryModelForm>({
     initialValues: initialInventory,
     validationSchema: InventorySchema,
     onSubmit: async (values) => {
-      const Inventory = await saveInventory(values as InventoryModel)
+      const Inventory = await saveInventory(values as unknown as InventoryModel)
 
       if (Inventory) {
         Swal.fire({
@@ -55,6 +55,7 @@ const CreateInventory= () => {
     });
   },[]);
 
+  console.log("🚀 ~ file: CreateInventory.tsx:58 ~ CreateInventory ~ formik.errors:", formik.errors)
   return (
     <>
       <Card extra="!p-[20px] text-center">
@@ -75,6 +76,7 @@ const CreateInventory= () => {
                   placeholder='Empresa'
                   {...formik.getFieldProps('company')}
                 >
+                  <option  value=''>Seleccione empresa</option>
                   {companies.map((company) => (
                     <option key={company.id} value={company.id}>
                       {company.name}
@@ -82,7 +84,9 @@ const CreateInventory= () => {
                   ))}
                 </Select>
                 {formik.touched.company && formik.errors.company && (
-                  <Alert variant='danger'>{formik.errors.company.name}</Alert>
+                  <Alert variant='danger'>
+                    {formik.errors.company}
+                  </Alert>
                 )}
               </div>
             </div>

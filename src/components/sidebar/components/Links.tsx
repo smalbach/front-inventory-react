@@ -23,8 +23,6 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
 
   const createLinks = (routes: RoutesType[]) => {
     return routes.map((route, index) => {
-      console.log("🚀 ~ file: Links.tsx:31 ~ returnroutes.map ~ user?.role.name:", user?.role.name)
-
       if (
         route.layout === "/" &&
         route.roles.includes(user?.role.name)
