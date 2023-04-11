@@ -37,7 +37,7 @@ const UpdateInventory: React.FC<Props> = ({inventory, setIsEditing }) => {
         setLoading(false)
         formik.resetForm()
         Swal.fire({
-          title: 'Empresa actualizasa',
+          title: 'Empresa actualizada',
           text: 'La empresa ha sido actualizada correctamente',
           icon: 'success',
           confirmButtonText: 'Aceptar',
