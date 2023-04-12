@@ -57,7 +57,9 @@ const Login = () => {
 
   return (
     <form className='' onSubmit={formik.handleSubmit} noValidate id='kt_login_signin_form'>
-
+      Admin: smalbach24@gmail.com --- Password: Password123
+      <br/>
+      User: user@user.com --- Password: Password123
       <section className=''>
         <H1>Welcome back</H1>
       </section>
