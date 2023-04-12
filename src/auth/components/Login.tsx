@@ -129,14 +129,10 @@ const Login = () => {
             {loading ? (
               <span className='spinner-border spinner-border-sm' role='status' aria-hidden='true' />
             ) : (
-              'Sign In'
+              'Iniciar sesion'
             )}
           </Button>
-          <div className='my-2'>
-            <Link to='/auth/forgot-password'>
-              <p>Forgot password?</p>
-            </Link>
-          </div>
+       
         </section>
       </div>
     </form>
