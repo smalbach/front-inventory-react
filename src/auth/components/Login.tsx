@@ -56,85 +56,89 @@ const Login = () => {
   })
 
   return (
-    <form className='' onSubmit={formik.handleSubmit} noValidate id='kt_login_signin_form'>
-      Admin: smalbach24@gmail.com --- Password: Password123
-      <br/>
-      User: user@user.com --- Password: Password123
-      <section className=''>
-        <H1>Welcome back</H1>
-      </section>
-      <section className=''>
-        <H3>Email address</H3>
-        <Input
-          className=''
-          placeholder='Email'
-          {...formik.getFieldProps('email')}
-          type='email'
-          name='email'
-        />
-        {formik.touched.email && formik.errors.email && (
-          <div className=''>
-            <span role='alert' className=''>
-              <Alert>{formik.errors.email}</Alert>
-            </span>
-          </div>
-        )}
-      </section>
-      <section>
-        <H3>Password</H3>
-        <Input
-          type='password'
-          autoComplete='off'
-          placeholder='Password'
-          {...formik.getFieldProps('password')}
-          className={clsx(
-            '',
-            {
-              'is-invalid': <Alert>formik.touched.password && formik.errors.password,</Alert>,
-            },
-            {
-              'is-valid': <Alert>formik.touched.password && !formik.errors.password,</Alert>,
-            }
+    
+    <form className='flex flex-col  items-center' onSubmit={formik.handleSubmit} noValidate id='kt_login_signin_form' >
+      <div className='w-1/2 items-center justify-cente'>
+        Admin: smalbach24@gmail.com --- Password: Password123
+        <br/>
+        User: user@user.com --- Password: Password123
+ 
+        <section className='w'>
+          <H1>Welcome back</H1>
+        </section>
+        <section className=''>
+          <H3>Email address</H3>
+          <Input
+            className=''
+            placeholder='Email'
+            {...formik.getFieldProps('email')}
+            type='email'
+            name='email'
+          />
+          {formik.touched.email && formik.errors.email && (
+            <div className=''>
+              <span role='alert' className=''>
+                <Alert>{formik.errors.email}</Alert>
+              </span>
+            </div>
           )}
-        />
+        </section>
+        <section>
+          <H3>Password</H3>
+          <Input
+            type='password'
+            autoComplete='off'
+            placeholder='Password'
+            {...formik.getFieldProps('password')}
+            className={clsx(
+              '',
+              {
+                'is-invalid': <Alert>formik.touched.password && formik.errors.password,</Alert>,
+              },
+              {
+                'is-valid': <Alert>formik.touched.password && !formik.errors.password,</Alert>,
+              }
+            )}
+          />
 
-        <Alert>
-          {formik.touched.password && formik.errors.password && (
-            <div className=''>
+          <Alert>
+            {formik.touched.password && formik.errors.password && (
               <div className=''>
-                <span role='alert' className=''>
-                  <Alert>{formik.errors.password}</Alert>
-                </span>
+                <div className=''>
+                  <span role='alert' className=''>
+                    <Alert>{formik.errors.password}</Alert>
+                  </span>
+                </div>
               </div>
-            </div>
-          )}
-        </Alert>
-      </section>
-      <section>
-        <Alert>
-          {formik.status && (
-            <div className=''>
+            )}
+          </Alert>
+        </section>
+        <section>
+          <Alert>
+            {formik.status && (
               <div className=''>
-                <span role='alert' className=''>
-                  <Alert>{formik.status}</Alert>
-                </span>
+                <div className=''>
+                  <span role='alert' className=''>
+                    <Alert>{formik.status}</Alert>
+                  </span>
+                </div>
               </div>
-            </div>
-          )}
-        </Alert>
-        <Button type='submit' disabled={loading}>
-          {loading ? (
-            <span className='spinner-border spinner-border-sm' role='status' aria-hidden='true' />
-          ) : (
-            'Sign In'
-          )}
-        </Button>
-        <div className='my-2'>
-          <Link to='/auth/forgot-password'>
-            <p>Forgot password?</p>
-          </Link>
-        </div>
-      </section>
+            )}
+          </Alert>
+          <Button type='submit' disabled={loading}>
+            {loading ? (
+              <span className='spinner-border spinner-border-sm' role='status' aria-hidden='true' />
+            ) : (
+              'Sign In'
+            )}
+          </Button>
+          <div className='my-2'>
+            <Link to='/auth/forgot-password'>
+              <p>Forgot password?</p>
+            </Link>
+          </div>
+        </section>
+      </div>
     </form>
   )
 }
